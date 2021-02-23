@@ -4,8 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-# everything under firebase folder
-*/firebase.config.js
+# ignore firebase config file
+**/firebase/firebase.config.js
 # testing
 /coverage
 
