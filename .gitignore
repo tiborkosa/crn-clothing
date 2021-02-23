@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 # everything under firebase folder
-/firebase/*
+src/firebase/*
 # testing
 /coverage
 
