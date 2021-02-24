@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
@@ -33,7 +33,6 @@ class App extends React.Component {
               ...snapShot.data()
             }
           });
-          console.log(this.state.currentUser);
         });
       } else {
         this.setState({ currentUser: userAuth });
@@ -51,13 +50,16 @@ class App extends React.Component {
   }
 
   render(){
+    const {currentUser} = this.state;
     return (
       <div >
         <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
-          <Route path='/signin' component={SignInSignUp} />
+          <Route path='/signin'  >
+            {currentUser ? <Redirect to="/" /> : <SignInSignUp />}
+          </Route>
         </Switch>
         
       </div>
