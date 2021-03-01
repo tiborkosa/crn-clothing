@@ -1,15 +1,18 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
-import Header from './components/header/header.component';
-import SignInSignUp from './pages/sign-in-sign-up/signInSignUp.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
 import { createStructuredSelector } from 'reselect';
+
+import HomePage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shop/shop.component';
+import Header from './components/header/header.component';
+import CheckOut from './pages/checkOut/checkOut.component';
+
+import SignInSignUp from './pages/sign-in-sign-up/signInSignUp.component';
+import { auth, createUserProfileDocument } from './firebase/firebase.util';
+
 import './App.css';
 
 class App extends React.Component {
@@ -63,6 +66,7 @@ class App extends React.Component {
               ) 
             }
           />
+          <Route exact path='/checkout' component={CheckOut} />
         </Switch>
         
       </div>
