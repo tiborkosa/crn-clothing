@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { createStructuredSelector } from 'reselect';
-import { selectCartHidden, selectCartItems } from '../../redux/cart/cart.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector'
 
 import { ReactComponent as Logo} from '../../assets/crown.svg';
