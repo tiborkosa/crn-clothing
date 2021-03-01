@@ -41,16 +41,12 @@ class App extends React.Component {
   }
  
   componentWillUnmount(){
-    console.log("componentWillUnmount [ App.js]");
     if(this.unsubscribedFromAuth) {
       this.unsubscribedFromAuth();
-      console.log('unmounted and unsubsrcibed')
     }
   }
 
   render(){
-   // const {currentUser} = this.state;
-   //{currentUser ? <Redirect to="/" /> : <SignInSignUp />}
     return (
       <div >
         <Header  />

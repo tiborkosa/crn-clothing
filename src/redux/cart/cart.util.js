@@ -29,6 +29,4 @@ export const decreaseQuantity = ( cartItems, idToDecrease ) => {
                 :cartItem
         )
     }
-    
 }
-
