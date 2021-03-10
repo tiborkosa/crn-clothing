@@ -6,6 +6,8 @@
 .pnp.js
 # ignore firebase config file
 **/firebase/firebase.config.js
+# ignore stripe config file
+**/stipe/stipe.config.js
 # testing
 /coverage
 
