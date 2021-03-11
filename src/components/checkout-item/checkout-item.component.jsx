@@ -1,37 +1,48 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { removeItem, decreaseQuantity, addItem } from '../../redux/cart/cart.action';
+import {
+    decreaseQuantity,
+    addItem,
+    removeItem
+} from '../../redux/cart/cart.action';
 
-import './checkout-item.style.scss';
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  TextContainer,
+  QuantityContainer,
+  RemoveButtonContainer
+} from './checkout-item.styles';
 
-const CheckoutItem = ( {  item ,clearItem, addItem, decItem} ) =>  {
-    const { id, imageUrl, price, name, quantity } = item;
-    return (
-    <div className='checkout-item'>
-        <div className='image-container'>
-            <img src={imageUrl} alt='item' />
-        </div>
-        <span className='name'>{name}</span>
-        <div className='quantity-container'>
-            <div className='remove-button' onClick={ () => decItem(id)}>
-                &#8810;
-            </div>
-            <span className='quantity'>{quantity}</span>
-            <div className='remove-button' onClick={ () => addItem(item)}>
-                &#8811;
-            </div>
-        </div>
-        <span className='price'>{price}</span>
-        <div className='remove-button' onClick={ () => clearItem(id)}>
-            &#10005;
-        </div>
-    </div>
-)};
+const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
+  const { name, imageUrl, price, quantity } = item;
+  return (
+    <CheckoutItemContainer>
+      <ImageContainer>
+        <img src={imageUrl} alt='item' />
+      </ImageContainer>
+      <TextContainer>{name}</TextContainer>
+      <QuantityContainer>
+        <div onClick={() => removeItem(item.id)}>&#10094;</div>
+        <span>{quantity}</span>
+        <div onClick={() => addItem(item)}>&#10095;</div>
+      </QuantityContainer>
+      <TextContainer>{price}</TextContainer>
+      <RemoveButtonContainer onClick={() => clearItem(item.id)}>
+        &#10005;
+      </RemoveButtonContainer>
+    </CheckoutItemContainer>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
     clearItem: itemId => dispatch(removeItem(itemId)),
     addItem: item => dispatch(addItem(item)),
-    decItem: itemId => dispatch(decreaseQuantity(itemId))
-})
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+    removeItem: itemId => dispatch(decreaseQuantity(itemId))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CheckoutItem);
